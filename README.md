@@ -95,6 +95,9 @@ Again, great job!
 
 
 ### Feedback 4
+The graph is pretty cool. I like how it toggles when you select different variation (attendance, height, and ticket price).
+From my perspective, the only confusion or you can say unclear part the Man’s height chart. I’m not sure what analysis it is trying to convey.
+
 * Is there something you don't like in the graphic?
 	- No
 * Is there something you don’t understand in the graphic?
