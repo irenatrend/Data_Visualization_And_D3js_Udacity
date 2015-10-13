@@ -1,0 +1,87 @@
+circle.dimple-series-1 {
+    fill: #000000;
+}
+rect.dimple-tooltip {
+      fill: #EEEEEE !important;
+      border-color: red !important;
+    }
+
+h2 {
+    text-align: center;
+    font-family: Calibri;
+}
+.chart {
+    /*background-color: red;*/
+
+}
+
+#header {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 2px;
+    font-family: Calibri;
+}
+
+#footer {
+    background-color: black;
+    color: white;
+    clear: both;
+    text-align: center;
+    padding: 5px;
+    font-family: Calibri;
+}
+
+#main {
+    margin-right: 250px;
+}
+
+#content {
+    float: left;
+    width: 100%;
+    height: 680px;
+}
+
+#menu {
+    float: right;
+    width: 250px;
+    margin-right: -250px;
+    background-color: #EEEEEE;
+    padding: 0px;
+    height: 680px;
+}
+
+#menImage {
+    float: left;
+    width: 150px;
+    margin-left: 0px;
+    /*background-color: #000000;*/
+    padding: 10px;
+    height: 620px;
+}
+
+#chrt {
+    /*background-color: #FFFFFF;*/
+}
+
+.line {
+    fill: none;
+}
+
+.box,.line {
+    stroke: #636363;
+    stroke-width: 2px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+form {
+    position: absolute;
+    /*right: 450px;*/
+    left: 100px;
+    top: 170px;
+    font-family: Calibri;
+    font-size: 14px;
+    font-weight: bold;
+}
+

@@ -1,0 +1,435 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Burning Man Timeline</title>
+    <script src="js/d3.v3.min.js"></script>
+    <script src="js/dimple.v2.0.0.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="css/style_1.css">
+
+    <script type="text/javascript">
+        function draw(data) {
+
+            "use strict";
+            // Set the dimensions of the canvas / graph
+            var margin = { top: 60, right: 10, bottom: 30, left: 10 },
+                width = 1200 - margin.left - margin.right,
+                height = 1000 - margin.top - margin.bottom;
+
+            var svg = d3.select("#chart")
+                .append("svg")
+                  .attr("width", width)
+                  .attr("height", height)
+                .append('g')
+                    .attr('class', 'chart');
+
+            // Set main description text
+            createDescription(svg);
+
+            // Creating radio buttons
+            SetChartOptions();
+            
+            // Chart construction
+            var myChart = new dimple.chart(svg, data);
+            myChart.setBounds(100, 130, 980, 500); //(x, y, width, height)
+
+            var x_axis = myChart.addTimeAxis("x", "Year");
+            x_axis.dateParseFormat = "%Y";
+            x_axis.tickFormat = "%Y";
+            x_axis.timeInterval = 1;
+            x_axis.addOrderRule("Year", true);
+
+            var y_axis = myChart.addMeasureAxis("y", "Attendance");
+
+            var s_line = myChart.addSeries(null, dimple.plot.line);
+            var s_scatter = myChart.addSeries(
+                ["Year", "Location", "Attendance", "Man Height", "Ticket Price", "Man Location",
+                    "Theme", "Temple", "Theme Camps / Placed Art", "MainEvent", "ManHeightEvent",
+                    "TicketPriceEvent", "MainEventDescription", "TicketPriceEventDescription", "ManHeightEventDescription"],
+                dimple.plot.scatter);
+
+            // Create array of main events by year
+            var mainEvents = {};
+            myChart.data.forEach(function (row) {
+                var Year = row.Year;
+                var MainEvent = row.MainEvent;
+                var ManHeightEvent = row.ManHeightEvent;
+                var TicketPriceEvent = row.TicketPriceEvent;
+
+                mainEvents[Year] = [MainEvent, ManHeightEvent, TicketPriceEvent];
+            });
+
+
+            // Set some custom elements to display main events on the chart
+            s_scatter.afterDraw = function (s, d) { //shape, data
+
+                var shape = d3.select(s);
+
+                var xCoordinate = shape.attr('cx');
+                var yCoordinate = shape.attr('cy');
+                yCoordinate = yCoordinate - 65
+
+                var year = d.cx.getFullYear();
+
+                setTimeout(function () {
+                    // Mark major events
+                    switch (myChart.axes[1].measure) {
+                        case "Attendance":
+                            switch (year) {
+                                case 1988:
+                                    markEvent(svg, mainEvents[year][0], xCoordinate, yCoordinate, -8, "end");
+                                    break;
+                                case 1991:
+                                    markEvent(svg, mainEvents[year][0], xCoordinate, yCoordinate, -8, "end");
+                                    break;
+                                case 1992:
+                                    markEvent(svg, mainEvents[year][0], xCoordinate, yCoordinate, 0, "end");
+                                    break;
+                                case 1993:
+                                    markEvent(svg, mainEvents[year][0], xCoordinate, yCoordinate, 5, "end");
+                                    break;
+                                case 1994:
+                                    markEvent(svg, mainEvents[year][0], xCoordinate, yCoordinate, 5, "end");
+                                    break;
+                                case 1995:
+                                    markEvent(svg, mainEvents[year][0], xCoordinate, yCoordinate, 5, "middle");
+                                    break;
+                                case 1997:
+                                    markEvent(svg, mainEvents[year][0], xCoordinate, yCoordinate, 5, "end");
+                                    break;
+                                case 1998:
+                                    markEvent(svg, mainEvents[year][0], xCoordinate, yCoordinate, 0, "end");
+                                    break;
+                                case 1999:
+                                    markEvent(svg, mainEvents[year][0], xCoordinate, yCoordinate, 0, "end");
+                                    break;
+                                case 2002:
+                                    markEvent(svg, mainEvents[year][0], xCoordinate, yCoordinate, 0, "end");
+                                    break;
+                                case 2003:
+                                    markEvent(svg, mainEvents[year][0], xCoordinate, yCoordinate, 5, "end");
+                                    break;
+                                case 2004:
+                                    markEvent(svg, mainEvents[year][0], xCoordinate, yCoordinate, 5, "end");
+                                    break;
+                                case 2006:
+                                    markEvent(svg, mainEvents[year][0], xCoordinate, yCoordinate, 5, "end");
+                                    break;
+                                case 2008:
+                                    markEvent(svg, mainEvents[year][0], xCoordinate, yCoordinate, 5, "end");
+                                    break;
+                                case 2009:
+                                    markEvent(svg, mainEvents[year][0], xCoordinate, yCoordinate, 5, "end");
+                                    break;
+                                case 2011:
+                                    markEvent(svg, mainEvents[year][0], xCoordinate, yCoordinate, 0, "end");
+                                    break;
+                                case 2013:
+                                    markEvent(svg, mainEvents[year][0], xCoordinate, yCoordinate, -15, "end");
+                                    break;
+                                case 2014:
+                                    markEvent(svg, mainEvents[year][0], xCoordinate, yCoordinate, -10, "end");
+                                    break;
+								case 2015:
+                                    markEvent(svg, mainEvents[year][0], xCoordinate, yCoordinate, -5, "end");
+                                    break;
+                            }
+
+                            break;
+
+                        case "Man Height":
+                            switch (year) {
+                                case 1991:
+                                    markEvent(svg, mainEvents[year][1], xCoordinate, yCoordinate, 5, "middle");
+                                    break;
+                                case 1996:
+                                    markEvent(svg, mainEvents[year][1], xCoordinate, yCoordinate, 5, "middle");
+                                    break;
+                                case 2000:
+                                    markEvent(svg, mainEvents[year][1], xCoordinate, yCoordinate, 5, "end");
+                                    break;
+                                case 2001:
+                                    markEvent(svg, mainEvents[year][1], xCoordinate, yCoordinate, 5, "end");
+                                    break;
+                                case 2008:
+                                    markEvent(svg, mainEvents[year][1], xCoordinate, yCoordinate, 5, "end");
+                                    break;
+                                case 2013:
+                                    markEvent(svg, mainEvents[year][1], xCoordinate, yCoordinate, 5, "end");
+                                    break;
+                                case 2015:
+                                    markEvent(svg, mainEvents[year][1], xCoordinate, yCoordinate, 5, "end");
+                                    break;
+                            }
+
+                            break;
+
+                        case "Ticket Price":
+                            switch (year) {
+                                case 1994:
+                                    markEvent(svg, mainEvents[year][2], xCoordinate, yCoordinate, 5, "end");
+                                    break;
+                                case 2001:
+                                    markEvent(svg, mainEvents[year][2], xCoordinate, yCoordinate, 0, "end");
+                                    break;
+                                case 2002:
+                                    markEvent(svg, mainEvents[year][2], xCoordinate, yCoordinate, 10, "end");
+                                    break;
+                                case 2008:
+                                    markEvent(svg, mainEvents[year][2], xCoordinate, yCoordinate, 5, "end");
+                                    break;
+                                case 2009:
+                                    markEvent(svg, mainEvents[year][2], xCoordinate, yCoordinate, 0, "end");
+                                    break;
+                                case 2011:
+                                    markEvent(svg, mainEvents[year][2], xCoordinate, yCoordinate, 10, "end");
+                                    break;
+                                case 2012:
+                                    markEvent(svg, mainEvents[year][2], xCoordinate, yCoordinate, 5, "end");
+                                    break;
+                                case 2013:
+                                    markEvent(svg, mainEvents[year][2], xCoordinate, yCoordinate, 5, "end");
+                                    break;
+                                case 2015:
+                                    markEvent(svg, mainEvents[year][2], xCoordinate, yCoordinate, 15, "middle");
+                                    break;
+                            }
+
+                            break;
+                    }
+                }, 1000);
+            };
+
+            // Override the standard tooltip behaviour
+            s_scatter.addEventHandler("mouseover", function (e) {
+
+                e.selectedShape[0][0].style.fill = "#FF0000";
+
+                var hoverDescription;
+                var barHeight;
+
+                // Get the properties of the selected shape
+                var cx = parseFloat(e.selectedShape.attr("cx")),
+                    cy = parseFloat(e.selectedShape.attr("cy")),
+                    r = parseFloat(e.selectedShape.attr("r")),
+                    fill = e.selectedShape.attr("fill"),
+                    stroke = e.selectedShape.attr("stroke");
+
+                switch (myChart.axes[1].measure) {
+                    case "Attendance":
+                        hoverDescription = [(e.seriesValue[12]),
+                                    "Year: " + e.seriesValue[0],
+                                    "Attendance: " + d3.format(",.f")(e.seriesValue[2]),
+                                    "Location: " + e.seriesValue[1],
+                                    ("Theme: " + e.seriesValue[6]),
+                                    (e.seriesValue[8])];
+
+                        barHeight = 120;
+
+                        break;
+
+                    case "Man Height":
+                        hoverDescription = [(e.seriesValue[14]),
+                                    "Year: " + e.seriesValue[0],
+                                    ("Man Height: " + e.seriesValue[3] + "'"),
+                                    ("Man Location: " + e.seriesValue[5]),
+                                    ("Temple: " + e.seriesValue[7])];
+
+                        barHeight = 95;
+
+                        break;
+
+                    case "Ticket Price":
+                        hoverDescription = [e.seriesValue[13],
+                                    "Year: " + e.seriesValue[0],
+                                    ("Ticket Price: $" + e.seriesValue[4]),
+                                    ("Attendance: " + d3.format(",.f")(e.seriesValue[2])),
+                                    ("Estimated Ticket Revenue: $" + d3.format(",.f")(e.seriesValue[2] * e.seriesValue[4]))];
+
+                        barHeight = 95;
+
+                        break;
+                }
+
+                // Draw the text information in the top left corner
+                svg.selectAll(".dimple-hover-text")
+                  .data(hoverDescription)
+                    .enter()
+                    .append("text")
+                    .attr("class", "dimple-hover-text")
+                    .attr("x", myChart._xPixels() + myChart._widthPixels() - 950)
+                    .attr("y", function (d, i) { return myChart._yPixels() - 5 + i * 20; })
+                    .style("font-family", "Calibri")
+                    .style("text-anchor", "begining")
+                    .style("font-size", "14px")
+                    .style("fill", "#000000")
+                    .style("word-wrap", "break-word")
+                    .style("pointer-events", "none")
+                    .text(function (d) { return d; });
+
+                // Put a coloured bar next to the text for no good reason
+                svg.append("rect")
+                  .attr("class", "dimple-hover-text")
+                  .attr("x", myChart._xPixels() + myChart._widthPixels() - 970)
+                  .attr("y", myChart._yPixels() - 15)
+                  .attr("height", barHeight)
+                  .attr("width", 10)
+                  .style("fill", "#000000")
+                  .style("opacity", 1)
+                  .style("pointer-events", "none");
+
+            });
+
+            // Clear the text on exit
+            s_scatter.addEventHandler("mouseleave", function (e) {
+                svg.selectAll(".dimple-hover-text").remove();
+                svg.selectAll(".tooltip").remove();
+                svg.selectAll(".extra_title_text").remove();
+   
+                e.selectedShape[0][0].style.fill = "#000000";
+            });
+
+            myChart.draw(3000);
+            
+
+            // Choose what to display Attendance,  Man Height or Ticket Price info
+            d3.selectAll("input").on("change", function () {
+
+                // Remove all the static ToolTips
+                svg.selectAll(".writing").remove();
+                svg.selectAll(".line").remove();
+
+                // Draw chart based on the y measure value
+                switch (this.value) {
+                    case "0": //Attendance
+                        d3.select('h1')
+                             .text("The Story About Burning Man (Attendance Timeline)");
+
+                        y_axis.title = "Attendance";
+                        myChart.axes[1].measure = "Attendance";
+                        myChart.draw(3000);
+
+
+                        break;
+
+                    case "1": //Man Height
+                        d3.select('h1')
+                             .text("The Story About Burning Man (Man Height Timeline)");
+
+                        y_axis.title = "Man Height (')";
+                        myChart.axes[1].measure = "Man Height";
+                        myChart.draw(3000);
+
+                        break;
+
+                    case "2": //Ticket price
+                        d3.select('h1')
+                             .text("The Story About Burning Man (Ticket Price Timeline)");
+
+                        y_axis.title = "Ticket Price ($)";
+                        myChart.axes[1].measure = "Ticket Price";
+                        myChart.draw(3000);
+                        
+                        break;
+                }
+            });
+        }
+
+        /// Add Static ToolTip/Event on the chart
+        function markEvent(svg, eventTitle, xLabel, yLabel, y1, textAnchor) {
+
+            svg.append("text")
+                .attr("class", "writing")
+                .attr("x", xLabel)
+                .attr("y", yLabel - y1)
+                .style("pointer-events", "none")
+                .style("font-family", "Calibri")
+                .style("text-anchor", textAnchor)
+                .style("font-size", "11px")
+                .style("font-weight", "bold")
+                .text(eventTitle);
+
+            svg.append("path")
+                .attr("class", "line")
+                .attr("transform", "translate(" + xLabel + "," + yLabel + ")")
+                .attr("d", "M 2 5 L 0 65 L -5 55 L 8 56 L 3 62")
+        }
+
+        function createDescription(svg) {
+
+            var mainDescription = [
+                "",
+                "Burning Man is an annual gathering that takes place at Black Rock City (a temporary community erected in the Black Rock Desert in Nevada). At Burning Man the",
+                "community explores various forms of artistic self-expression, created in celebration for the pleasure of all participants. The statistics below illustrate the growth",
+                "in attendance of the Burning Man event as well as other facts and figures. We can also see how the man height changed over the years and more info about ticket",
+                "prices and ticket sales strategy. The event has experienced significant growth in popularity."];
+
+            summary_text(svg, mainDescription, 100, 10, "15px", "black");
+        }
+
+        // Function for summary text
+        function summary_text(svg, text, x, y, fontsize, color) {
+
+            svg.selectAll("title_text")
+            .data(text)
+            .enter()
+            .append("text")
+            .attr("x", x)
+            .attr("y", function (d, i) { return y + i * 14; })
+            .style("font-family", "Calibri")
+            .style("font-size", fontsize)
+            .style("color", color)
+            .text(function (d) { return d; });
+        }
+
+        function SetChartOptions() {
+            var j = 0;  // Choose Attendance as default
+
+            // Create the shape selectors
+            var form = d3.select("#chart").append("form");
+
+            var labelEnter = form.selectAll("span")
+                .data(["Attendance", "Man Height", "Ticket Price"])
+                .enter().append("span");
+
+            labelEnter.append("input")
+                .attr({
+                    type: "radio",
+                    class: "shape",
+                    name: "mode",
+                    value: function (d, i) { return i; }
+                })
+                .property("checked", function (d, i) {
+                    return (i === j);
+                });
+
+            labelEnter.append("label").text(function (d) { return d; });
+        }
+    </script>
+
+</head>
+
+<body>
+    <script type="text/javascript">
+        /*
+        Use D3 (not dimple.js) to load the TSV file
+        and pass the contents of it to the draw function
+        */
+        d3.csv("data/BurningManData.csv", draw);
+    </script>
+    <div id="header">
+        <h1>The Story About Burning Man (Attendance Timeline)</h1>
+    </div>
+
+    <div id="main">
+        <div id="content">
+            <div id="chart"></div>
+        </div>
+        <div id="menu"><img src="images/BurningMan.png"></div>
+
+    </div>
+    <div id="footer">By Irena Trendafilova | Data Analyst Nanodegree | Data Visualization and D3.js</div>
+</body>
+
+</html>
