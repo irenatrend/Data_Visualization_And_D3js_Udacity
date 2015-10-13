@@ -1,6 +1,6 @@
 # Data Visualization and D3.js - Data Analyst Nanodegree (Udacity)
 
-[The Story About Burning Man](https://htmlpreview.github.io/?https://github.com/irenatrend/Data_Visualization_And_D3js_Udacity/blob/master/index.html)
+[The Story About Burning Man](https://rawgit.com/irenatrend/Data_Visualization_And_D3js_Udacity/master/index.html)
  
 *...A picture is worth a thousand words...*
 
@@ -24,7 +24,7 @@ Using  comment arrows (static tooltips) with different color my point was to emp
 On the standard/regular tooltips which are displayed on hover  I was able to display more info about each year.
 
 After collecting the feedback from the Udacity discussion forum and my coworkers I've decided to do the following changes to improve my initial chart design
-[The Story About Burning Man version 1](https://htmlpreview.github.io/?https://github.com/irenatrend/Data_Visualization_And_D3js_Udacity/blob/master/index_1.html).
+[The Story About Burning Man version 1](https://rawgit.com/irenatrend/Data_Visualization_And_D3js_Udacity/master/index_1.html).
  
 * Play around with arrow lengths and text placements to make all of the comments easier to read.
 * Change the arrow color.
@@ -44,7 +44,7 @@ My next steps are:
 * Add more text around my chart before I share it officialy with my friends. 
 
 Here is my final version: 
-[The Story About Burning Man](https://htmlpreview.github.io/?https://github.com/irenatrend/Data_Visualization_And_D3js_Udacity/blob/master/index.html)
+[The Story About Burning Man](https://rawgit.com/irenatrend/Data_Visualization_And_D3js_Udacity/master/index.html)
 
 
 ## Feedback
