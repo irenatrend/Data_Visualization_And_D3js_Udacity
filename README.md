@@ -6,13 +6,13 @@
 
 ## Summary
 Burning Man is an annual gathering that takes place at Black Rock City (a temporary community erected in the Black Rock Desert in Nevada). At Burning Man the
-community explores various forms of artistic self-expression, created in celebration for the pleasure of all participants. The statistics below illustrate the 
-growth in attendance of the Burning Man event as well as other facts and figures. Additionally the chart visualize the man height changes over 
-the years and is displaying more info about ticket prices and ticket sales strategy. The event has experienced significant growth in popularity.
+community explores various forms of artistic self-expression, created in celebration for the pleasure of all participants. The visualization bellow emphasizes 
+the growth in attendance of the event as well as other facts and figures. Additionaly the visualization highlight the main ticket sales strategies over the 
+ticket prices growth and visualize the man height changes over the years. The event has experienced significant growth in popularity.
 
-In this project the main goal was to tell the story about the Burning Man event. I was really interested to learn more about the event, as well as to 
-visualize my findings and share the chart with my friends. Since I didn't find any dataset that will contain all the information I 
-was interested in, I've decided to build it by myself. I did some research, defined the data set columns and categorized the information by myself. 
+In this project the main goal was to tell the story about the Burning Man event. I was really interested to learn more about the event, visualize my 
+findings and share the chart with my friends. Since I didn't find any dataset that contained all the information I was interested in, I've decided 
+to build it by myself. I did some research, defined the data set columns and categorized the information by myself. 
 
 Researching and learning more and more about the event, and creating the dataset by myself was really interesting part of my project work. 
 All the data was collected from couple of different sites. After classifying the data my idea was to visualize it on one page chart where I can 
@@ -22,6 +22,7 @@ display the attendance, ticket price, man height values over the years as well a
 Line charts are particularly good for showing changes over time. A line chart plus scatter plot was a great choice to achieve simplicity. 
 Using  comment arrows (static tooltips) with different color my point was to emphasize some special events and highlight the main one (font color: red). 
 On the standard/regular tooltips which are displayed on hover  I was able to display more info about each year.
+
 
 After collecting the feedback from the Udacity discussion forum and my coworkers I've decided to do the following changes to improve my initial chart design
 [The Story About Burning Man version 1](https://rawgit.com/irenatrend/Data_Visualization_And_D3js_Udacity/master/index_1.html).
@@ -37,11 +38,16 @@ After collecting the feedback from the Udacity discussion forum and my coworkers
 
 I've decided not to change the series type from scatter to bar, since scatter plots were more clear design solution.
 
-My next steps are: 
+Next steps... 
 
-* Improve the data quality. Add or change current event descriptions if I find more valid data.
-* Include animation if needed (At this phase of my visualization I didn't see the value of including animation, but probably in the future I can add some animation.) 
-* Add more text around my chart before I share it officialy with my friends. 
+* **Data quality:** Improve the data quality (add or change current event description, in case I find more valid data).
+* **Exploratory data analysis:** By doing more exploratory data analysis, there could be more stories extracted from the data set. 
+  - Are ticket prices increasing at a faster rate than attendance? 
+  - Are the number of theme camps and placed art keeping pace with the increased attendance and ticket prices? 
+  - Answering questions like these would help give insight into where burning man might be going in the next few years.
+* **Animation:** Include animation if needed (At this phase of my visualization I didn't see the value of including animation, but probably in the future I can include some animation.) 
+* **Story description:** Add more text around my chart before I share it officialy with my friends. 
+
 
 Here is my final version: 
 [The Story About Burning Man](https://rawgit.com/irenatrend/Data_Visualization_And_D3js_Udacity/master/index.html)
