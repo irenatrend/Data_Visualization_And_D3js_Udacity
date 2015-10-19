@@ -38,17 +38,6 @@ After collecting the feedback from the Udacity discussion forum and my coworkers
 
 I've decided not to change the series type from scatter to bar, since scatter plots were more clear design solution.
 
-Next steps... 
-
-* **Data quality:** Improve the data quality (add or change current event description, in case I find more valid data).
-* **Exploratory data analysis:** By doing more exploratory data analysis, there could be more stories extracted from the data set. 
-  - Are ticket prices increasing at a faster rate than attendance? 
-  - Are the number of theme camps and placed art keeping pace with the increased attendance and ticket prices? 
-  - Answering questions like these would help give insight into where burning man might be going in the next few years.
-* **Animation:** Include animation if needed (At this phase of my visualization I didn't see the value of including animation, but probably in the future I can include some animation.) 
-* **Story description:** Add more text around my chart before I share it officialy with my friends. 
-
-
 Here is my final version: 
 [The Story About Burning Man](https://rawgit.com/irenatrend/Data_Visualization_And_D3js_Udacity/master/index.html)
 
@@ -113,6 +102,16 @@ From my perspective, the only confusion or you can say unclear part the Man’s he
 * What do you think is the main takeaway from this visualization?
 	- It show the growth of the “Burning Man” over the years.
 	- Ability to use different variations is great.
+	
+## Next steps... 
+
+* **Data quality:** Improve the data quality (add or change current event description, in case I find more valid data).
+* **Exploratory data analysis:** By doing more exploratory data analysis, there could be more stories extracted from the data set. 
+  - Are ticket prices increasing at a faster rate than attendance? 
+  - Are the number of theme camps and placed art keeping pace with the increased attendance and ticket prices? 
+  - Answering questions like these would help give insight into where burning man might be going in the next few years.
+* **Animation:** Include animation if needed (At this phase of my visualization I didn't see the value of including animation, but probably in the future I can include some animation.) 
+* **Story description:** Add more text around my chart before I share it officialy with my friends. 
 
 
 ## Resources 
